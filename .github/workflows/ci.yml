@@ -14,8 +14,8 @@ jobs:
       - name: Prepare folder for gh-pages
         run: |
           mkdir -p site/target/scala-2.13
-          cp target/scala-2.13/laminar-static-fastopt site/target/scala-2.13
-          cp target/scala-2.13/laminar-static-opt site/target/scala-2.13
+          cp -r target/scala-2.13/laminar-static-fastopt site/target/scala-2.13
+          cp -r target/scala-2.13/laminar-static-opt site/target/scala-2.13
           cp index-dev.html site
           cp index-prod.html site
       - name: Publish gh-pages
