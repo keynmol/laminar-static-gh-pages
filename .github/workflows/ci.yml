@@ -1,0 +1,24 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: olafurpg/setup-scala@v10
+      - name: Build fast and optimised JS
+        run: sbt ';fastLinkJS; fullLinkJS'
+      - name: Prepare folder for gh-pages
+        run: mkdir -p site/target/scala-2.13
+        run: cp target/scala-2.13/laminar-static-fastopt site/target/scala-2.13
+        run: cp target/scala-2.13/laminar-static-opt site/target/scala-2.13
+        run: cp index-dev.html site
+        run: cp index-prod.html site
+      - name: Publish gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site      
