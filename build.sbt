@@ -4,6 +4,6 @@ enablePlugins(ScalaJSPlugin)
 
 scalaJSUseMainModuleInitializer := true
 
-libraryDependencies += "com.raquo" %%% "laminar" % "0.14.5"
+libraryDependencies += "com.raquo" %%% "laminar" % "15.0.0"
 
 name := "laminar-static"
