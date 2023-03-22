@@ -1,9 +1,17 @@
-scalaVersion := "2.13.4"
+scalaVersion := "3.2.2"
 
 enablePlugins(ScalaJSPlugin)
 
 scalaJSUseMainModuleInitializer := true
 
-libraryDependencies += "com.raquo" %%% "laminar" % "0.14.5"
+libraryDependencies += "com.raquo" %%% "laminar" % "15.0.0"
 
 name := "laminar-static"
+
+import org.scalajs.linker.interface.ModuleSplitStyle
+
+scalaJSLinkerConfig ~= {
+  _.withModuleKind(ModuleKind.ESModule)
+    .withModuleSplitStyle(
+      ModuleSplitStyle.SmallModulesFor(List("example")))
+}
