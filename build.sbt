@@ -1,4 +1,4 @@
-scalaVersion := "3.2.2"
+scalaVersion := "3.3.5"
 
 enablePlugins(ScalaJSPlugin)
 
@@ -12,6 +12,5 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 
 scalaJSLinkerConfig ~= {
   _.withModuleKind(ModuleKind.ESModule)
-    .withModuleSplitStyle(
-      ModuleSplitStyle.SmallModulesFor(List("example")))
+    .withModuleSplitStyle(ModuleSplitStyle.SmallModulesFor(List("example")))
 }
